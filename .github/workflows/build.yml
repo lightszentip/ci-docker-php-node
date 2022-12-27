@@ -30,7 +30,7 @@ jobs:
         with:
           image: lightszentip/ci-docker-php-node
           tags: php{{ matrix.php }}
-          registry: registry-url.io
+          registry: docker.io
           dockerfile: Dockerfile
           buildArgs: PHP_VERSION={{ matrix.php }}
           username: ${{ secrets.DOCKER_USERNAME }}
