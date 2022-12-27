@@ -1,5 +1,5 @@
-ARG PHP_VERISON
-FROM php:$PHP_VERISON
+ARG PHP_VERSION
+FROM php:$PHP_VERSION
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
