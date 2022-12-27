@@ -8,11 +8,11 @@ RUN composer --version && php -v
 RUN apt-get update && apt-get install -y \
   --no-install-recommends git curl zip unzip \
   zlib1g-dev libzip-dev libmcrypt-dev \
-    mysql-client libmagickwand-dev --no-install-recommends \
+    libmagickwand-dev --no-install-recommends \
     && pecl install imagick \
     && docker-php-ext-enable imagick && apt-get -y upgrade
 
-RUN docker-php-ext-install zip mcrypt pdo_mysql
+RUN docker-php-ext-install zip mcrypt
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
