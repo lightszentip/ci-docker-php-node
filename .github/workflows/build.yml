@@ -3,34 +3,35 @@ on:
   push:
     branches: [main]
 jobs:
-  runs-on: ${{ matrix.os }}
-  strategy:
-    fail-fast: true
-    matrix:
-      os: [ ubuntu-latest ]
-      php: [ 8.2, 8.1, 8.0, 7.4 ]
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ ubuntu-latest ]
+        php: [ 8.2, 8.1, 8.0, 7.4 ]
 
-  name: P${{ matrix.php }} - ${{ matrix.os }}
-  steps:
-    - uses: actions/checkout@v3
-      name: Check out code
-    - name: Set output
-      id: vars
-      run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
-    - name: Check output
-      env:
-        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
-      run: |
-        echo $RELEASE_VERSION
-        echo ${{ steps.vars.outputs.tag }}
+    name: P${{ matrix.php }} - ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+        name: Check out code
+      - name: Set output
+        id: vars
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+      - name: Check output
+        env:
+          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ steps.vars.outputs.tag }}
 
-    - uses: mr-smithers-excellent/docker-build-push@v3
-      name: Build & push Docker image
-      with:
-        image: lightszentip/ci-docker-php-node
-        tags: php{{ matrix.php }}
-        registry: registry-url.io
-        dockerfile: Dockerfile
-        buildArgs: PHP_VERSION={{ matrix.php }}
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      - uses: mr-smithers-excellent/docker-build-push@v3
+        name: Build & push Docker image
+        with:
+          image: lightszentip/ci-docker-php-node
+          tags: php{{ matrix.php }}
+          registry: registry-url.io
+          dockerfile: Dockerfile
+          buildArgs: PHP_VERSION={{ matrix.php }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
