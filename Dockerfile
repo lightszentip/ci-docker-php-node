@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     && pecl install imagick \
     && docker-php-ext-enable imagick && apt-get -y upgrade
 
-RUN docker-php-ext-install zip mcrypt
+RUN docker-php-ext-install zip
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
