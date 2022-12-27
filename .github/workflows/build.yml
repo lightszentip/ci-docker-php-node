@@ -29,7 +29,7 @@ jobs:
         name: Build & push Docker image
         with:
           image: lightszentip/ci-docker-php-node
-          tags: php{{ matrix.php }}
+          tag: php{{ matrix.php }}
           registry: docker.io
           dockerfile: Dockerfile
           buildArgs: PHP_VERSION={{ matrix.php }}
