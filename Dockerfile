@@ -1,4 +1,5 @@
-FROM php:$PHP_VERISON-cli
+ARG PHP_VERISON
+FROM php:$PHP_VERISON
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
