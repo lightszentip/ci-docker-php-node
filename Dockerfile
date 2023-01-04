@@ -13,13 +13,11 @@ RUN phpModules=" \
         calendar \
         dba \
         exif \
-        ftp \
         gd \
         gettext \
         gmp \
         imap \
         intl \
-        ldap \
         mbstring \
         mysqli \
         opcache \
@@ -32,7 +30,6 @@ RUN phpModules=" \
         pspell \
         shmop \
         snmp \
-        soap \
         sockets \
         sysvmsg \
         sysvsem \
