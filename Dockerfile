@@ -39,7 +39,6 @@ RUN phpModules=" \
         sysvsem \
         sysvshm \
         tidy \
-        xmlrpc \
         xsl \
         zip \
     " \
