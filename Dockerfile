@@ -21,8 +21,6 @@ RUN phpModules=" \
         mbstring \
         mysqli \
         opcache \
-        pcntl \
-
         pdo_dblib \
         pdo_mysql \
         pdo_pgsql \
