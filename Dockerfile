@@ -21,8 +21,6 @@ RUN phpModules=" \
         mbstring \
         mysqli \
         pdo_mysql \
-        pdo_pgsql \
-        pgsql \
         pspell \
         sysvmsg \
         sysvsem \
