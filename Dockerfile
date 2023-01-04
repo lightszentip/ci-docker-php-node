@@ -52,7 +52,7 @@ RUN composer global require phpmd/phpmd squizlabs/php_codesniffer
 RUN composer global require phpstan/phpstan vimeo/psalm phan/phan
 
 # Install CD tools
-RUN composer global require deployer/deployer deployer/recipes
+RUN composer global require deployer/deployer
 
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash -
 RUN apt-get install -y \
