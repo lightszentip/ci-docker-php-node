@@ -5,7 +5,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN composer --version && php -v
 
-RUN apt-get update && apt-get install -y --no-install-recommends git curl zip unzip  zlib1g-dev libzip-dev libmcrypt-dev libmagickwand-dev
+RUN apt-get update && apt-get install -y --no-install-recommends git curl zip unzip  zlib1g-dev libzip-dev libmcrypt-dev libmagickwand-dev libgmp-dev
 RUN apt-get -y upgrade 
 RUN phpModules=" \
         bcmath \
@@ -16,7 +16,6 @@ RUN phpModules=" \
         gd \
         gettext \
         gmp \
-        imap \
         intl \
         mbstring \
         mysqli \
