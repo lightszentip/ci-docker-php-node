@@ -7,6 +7,7 @@ RUN composer --version && php -v
 
 RUN apt-get update && apt-get install -y --no-install-recommends git curl zip unzip  zlib1g-dev libzip-dev libmcrypt-dev libmagickwand-dev libgmp-dev libonig-dev unixodbc unixodbc-dev freetds-dev freetds-bin tdsodbc
 RUN apt-get -y upgrade 
+#        pdo 
 RUN phpModules=" \
         bcmath \
         bz2 \
@@ -21,7 +22,7 @@ RUN phpModules=" \
         mysqli \
         opcache \
         pcntl \
-        pdo \
+
         pdo_dblib \
         pdo_mysql \
         pdo_pgsql \
