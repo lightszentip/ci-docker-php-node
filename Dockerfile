@@ -6,7 +6,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 RUN composer --version && php -v
 
 RUN apt-get update && apt-get install -y --no-install-recommends git curl zip unzip  \
-zlib1g-dev libzip-dev libmcrypt-dev libmagickwand-dev libgmp-dev libonig-dev unixodbc unixodbc-dev freetds-dev freetds-bin tdsodbc \
+zlib1g-dev libzip-dev libmcrypt-dev libmagickwand-dev libgmp-dev libonig-dev unixodbc unixodbc-dev freetds-dev rsync freetds-bin tdsodbc \
 tini \
     unzip \
     vim \
