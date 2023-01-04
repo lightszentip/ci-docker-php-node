@@ -5,14 +5,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN composer --version && php -v
 
-RUN apt-get update && apt-get install -y \
-  --no-install-recommends git curl zip unzip \
-  zlib1g-dev libzip-dev libmcrypt-dev \
-    libmagickwand-dev --no-install-recommends \
-    && pecl install imagick \
-    && docker-php-ext-enable imagick \
-    && apt-get -y upgrade \
-       && phpModules=" \
+RUN apt-get update && apt-get install -y --no-install-recommends git curl zip unzip  zlib1g-dev libzip-dev libmcrypt-dev libmagickwand-dev
+RUN apt-get -y upgrade 
+RUN phpModules=" \
         bcmath \
         bz2 \
         calendar \
@@ -52,6 +47,14 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install $phpModules 
 
 RUN docker-php-ext-install zip
+
+RUN pecl install amqp \
+    && pecl install igbinary \
+    && pecl install imagick \
+    && pecl install mongodb \
+    && pecl install redis \
+    && pecl install ast \
+    && docker-php-ext-enable mongodb redis ast amqp imagick
 
 # Install testing tools
 RUN /usr/local/bin/composer global require phpunit/phpunit
