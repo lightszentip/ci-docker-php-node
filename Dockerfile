@@ -10,29 +10,14 @@ zlib1g-dev libzip-dev libmcrypt-dev libmagickwand-dev libgmp-dev libonig-dev uni
 tini \
     unzip \
     vim \
+     apt-transport-https \
+      git \
+     openssh-client \
     xz-utils \
+    software-properties-common \
     zip \
+     default-mysql-client \
     zsh 
-    
-RUN \
-  LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php \
-  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    php-pear \
-    php${PHP_VERSION}-cli \
-    php${PHP_VERSION}-common \
-    php${PHP_VERSION}-curl \
-    php${PHP_VERSION}-mbstring \
-    php${PHP_VERSION}-mysql \
-    php${PHP_VERSION}-sqlite3 \
-    php${PHP_VERSION}-xml \
-    php${PHP_VERSION}-zip \
-  && apt-get autoremove -y --purge \
-  && apt-get autoclean -y \
-  && apt-get clean -y \
-  && rm -rf /var/cache/debconf/*-old \
-  && rm -rf /usr/share/doc/* \
-  && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /var/cache/apt/*
     
 RUN apt-get -y upgrade 
 #        pdo opcache         pdo_dblib \         sockets \         shmop \        snmp \         pspell \         sysvmsg \ tidy xls        sysvsem \        sysvshm \
