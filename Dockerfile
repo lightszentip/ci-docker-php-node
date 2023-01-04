@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y \
   zlib1g-dev libzip-dev libmcrypt-dev \
     libmagickwand-dev --no-install-recommends \
     && pecl install imagick \
-    && docker-php-ext-enable imagick 
-    && apt-get -y upgrade
+    && docker-php-ext-enable imagick \
+    && apt-get -y upgrade \
        && phpModules=" \
         bcmath \
         bz2 \
