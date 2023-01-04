@@ -7,7 +7,9 @@ RUN composer --version && php -v
 
 RUN apt-get update && apt-get install -y --no-install-recommends git curl zip unzip  zlib1g-dev libzip-dev libmcrypt-dev libmagickwand-dev libgmp-dev libonig-dev unixodbc unixodbc-dev freetds-dev freetds-bin tdsodbc
 RUN apt-get -y upgrade 
-#        pdo opcache         pdo_dblib \         sockets \         shmop \        snmp \
+#        pdo opcache         pdo_dblib \         sockets \         shmop \        snmp \         pspell \         sysvmsg \ tidy xls
+        sysvsem \
+        sysvshm \
 RUN phpModules=" \
         bcmath \
         bz2 \
@@ -21,17 +23,9 @@ RUN phpModules=" \
         mbstring \
         mysqli \
         pdo_mysql \
-        pspell \
-        sysvmsg \
-        sysvsem \
-        sysvshm \
-        tidy \
-        xsl \
         zip \
     " \
     && docker-php-ext-install $phpModules 
-
-RUN docker-php-ext-install zip
 
 RUN pecl install amqp \
     && pecl install igbinary \
