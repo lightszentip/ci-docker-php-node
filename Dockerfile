@@ -25,13 +25,9 @@ RUN phpModules=" \
     " \
     && docker-php-ext-install $phpModules 
 
-RUN pecl install amqp \
-    && pecl install igbinary \
+RUN pecl install igbinary \
     && pecl install imagick \
-    && pecl install mongodb \
-    && pecl install redis \
-    && pecl install ast \
-    && docker-php-ext-enable mongodb redis ast amqp imagick
+    && docker-php-ext-enable imagick
 
 # Install testing tools
 RUN /usr/local/bin/composer global require phpunit/phpunit
