@@ -58,16 +58,16 @@ RUN pecl install igbinary \
     && docker-php-ext-enable imagick
 
 # Install testing tools
-RUN /usr/local/bin/composer global require phpunit/phpunit
+RUN composer global require phpunit/phpunit
 
 # Install linting tools
-RUN /usr/local/bin/composer global require phpmd/phpmd squizlabs/php_codesniffer
+RUN composer global require phpmd/phpmd squizlabs/php_codesniffer
 
 # Install static analysis tools
-RUN /usr/local/bin/composer global require phpstan/phpstan vimeo/psalm phan/phan
+RUN composer global require phpstan/phpstan vimeo/psalm phan/phan
 
 # Install CD tools
-RUN /usr/local/bin/composer global require deployer/deployer deployer/recipes
+RUN composer global require deployer/deployer deployer/recipes
 
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash -
 RUN apt-get install -y \
