@@ -16,7 +16,6 @@ RUN phpModules=" \
         gd \
         gettext \
         gmp \
-        intl \
         mbstring \
         mysqli \
         opcache \
