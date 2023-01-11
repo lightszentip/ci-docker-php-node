@@ -49,7 +49,7 @@ RUN composer global require phpunit/phpunit
 RUN composer global require phpmd/phpmd squizlabs/php_codesniffer
 
 # Install static analysis tools
-RUN composer global require phpstan/phpstan vimeo/psalm phan/phan
+#RUN composer global require phpstan/phpstan vimeo/psalm phan/phan
 
 # Install CD tools
 RUN composer global require deployer/deployer
