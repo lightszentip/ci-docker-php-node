@@ -59,6 +59,7 @@ RUN apt-get install -y \
   --no-install-recommends nodejs \
   && rm -rf /var/lib/apt/lists/*
 RUN npm install -g npm@latest
+RUN npx npkill
 
 #Clean
 RUN  apt-get autoremove -y --purge \
