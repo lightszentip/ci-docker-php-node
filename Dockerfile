@@ -61,7 +61,6 @@ RUN apt-get install -y \
 RUN npm install -g npm@latest
 RUN npm install -g pnpm
 
-#Clean
 RUN  apt-get autoremove -y --purge \
   && apt-get autoclean -y \
   && apt-get clean -y \
