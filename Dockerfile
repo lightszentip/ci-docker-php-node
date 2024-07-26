@@ -38,9 +38,23 @@ RUN phpModules=" \
     " \
     && docker-php-ext-install $phpModules 
 
-RUN pecl install igbinary \
-    && pecl install imagick \
-    && docker-php-ext-enable imagick
+RUN pecl install igbinary 
+#    && pecl install imagick \
+#    && docker-php-ext-enable imagick
+ARG IMAGICK_VERSION=3.7.0
+
+# Imagick is installed from the archive because regular installation fails
+# See: https://github.com/Imagick/imagick/issues/643#issuecomment-1834361716
+RUN curl -L -o /tmp/imagick.tar.gz https://github.com/Imagick/imagick/archive/refs/tags/${IMAGICK_VERSION}.tar.gz \
+    && tar --strip-components=1 -xf /tmp/imagick.tar.gz \
+    && phpize \
+    && ./configure \
+    && make \
+    && make install \
+    && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini \
+    && rm -rf /tmp/*
+    # <<< End of Imagick installation
+RUN docker-php-ext-enable imagick
 
 # Install testing tools
 RUN composer global require phpunit/phpunit
