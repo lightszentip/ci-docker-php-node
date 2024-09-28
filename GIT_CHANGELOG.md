@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file.
 ### Features
 
 - Run pipeline each day
+- Remove 8.1
 
 ### System
 
