@@ -27,6 +27,7 @@ RUN phpModules=" \
         calendar \
         dba \
         exif \
+        Imagick/imagick@65e27f2bc0 \
         gd \
         intl \
         gettext \
@@ -41,32 +42,26 @@ RUN phpModules=" \
 RUN pecl install igbinary 
 #    && pecl install imagick \
 #    && docker-php-ext-enable imagick
-ARG IMAGICK_VERSION=3.7.0
+#ARG IMAGICK_VERSION=3.7.0
 
 # Imagick is installed from the archive because regular installation fails
 # See: https://github.com/Imagick/imagick/issues/643#issuecomment-1834361716
-RUN curl -L -o /tmp/imagick.tar.gz https://github.com/Imagick/imagick/archive/refs/tags/${IMAGICK_VERSION}.tar.gz \
-    && tar --strip-components=1 -xf /tmp/imagick.tar.gz \
-    && phpize \
-    && ./configure \
-    && make \
-    && make install \
-    && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini \
-    && rm -rf /tmp/*
-    # <<< End of Imagick installation
-RUN docker-php-ext-enable imagick
-
-# Install testing tools
-RUN composer global require phpunit/phpunit
+#RUN curl -L -o /tmp/imagick.tar.gz https://github.com/Imagick/imagick/archive/refs/tags/${IMAGICK_VERSION}.tar.gz \
+#    && tar --strip-components=1 -xf /tmp/imagick.tar.gz \
+#    && phpize \
+#    && ./configure \
+#    && make \
+#    && make install \
+#    && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini \
+#    && rm -rf /tmp/*
+#    # <<< End of Imagick installation
+#RUN docker-php-ext-enable imagick
 
 # Install linting tools
-RUN composer global require phpmd/phpmd squizlabs/php_codesniffer
+RUN composer global require phpunit/phpunit phpmd/phpmd squizlabs/php_codesniffer deployer/deployer
 
 # Install static analysis tools
 #RUN composer global require phpstan/phpstan vimeo/psalm phan/phan
-
-# Install CD tools
-RUN composer global require deployer/deployer
 
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash -
 RUN apt-get install -y \
