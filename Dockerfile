@@ -37,8 +37,7 @@ RUN phpModules=" \
         zip \
     " \
     && docker-php-ext-install $phpModules 
-RUN phpModules="Imagick/imagick@65e27f2bc0" 
-    && docker-php-ext-install $phpModules 
+RUN phpModules="Imagick/imagick@65e27f2bc0" && docker-php-ext-install $phpModules 
 RUN pecl install igbinary 
 #    && pecl install imagick \
 #    && docker-php-ext-enable imagick
