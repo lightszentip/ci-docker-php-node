@@ -1,5 +1,6 @@
 ARG PHP_VERSION
-FROM php:$PHP_VERSION
+#FROM php:$PHP_VERSION
+FROM ghcr.io/mvorisek/image-php:$PHP_VERSION-debian
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -21,24 +22,24 @@ tini \
     
 RUN apt-get -y upgrade 
 #        pdo opcache         pdo_dblib \         sockets \         shmop \        snmp \         pspell \         sysvmsg \ tidy xls        sysvsem \        sysvshm \
-RUN phpModules=" \
-        bcmath \
-        bz2 \
-        calendar \
-        dba \
-        exif \
-        gd \
-        intl \
-        gettext \
-        gmp \
-        mbstring \
-        mysqli \
-        pdo_mysql \
-        zip \
-    " \
-    && docker-php-ext-install $phpModules 
-RUN phpModules="Imagick/imagick@65e27f2bc0" && docker-php-ext-install $phpModules 
-RUN pecl install igbinary 
+#RUN phpModules=" \
+#        bcmath \
+#        bz2 \
+#        calendar \
+#        dba \
+#        exif \
+#        gd \
+#        intl \
+#        gettext \
+#        gmp \
+#        mbstring \
+#        mysqli \
+#        pdo_mysql \
+#        zip \
+#    " \
+#    && docker-php-ext-install $phpModules 
+#RUN phpModules="Imagick/imagick@65e27f2bc0" && docker-php-ext-install $phpModules 
+#RUN pecl install igbinary 
 #    && pecl install imagick \
 #    && docker-php-ext-enable imagick
 #ARG IMAGICK_VERSION=3.7.0
