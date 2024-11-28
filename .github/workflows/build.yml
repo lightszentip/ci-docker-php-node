@@ -35,6 +35,6 @@ jobs:
           tag: php${{ matrix.php }}
           registry: docker.io
           dockerfile: Dockerfile
-          buildArgs: PHP_VERSION=${{ matrix.php }}-cli
+          buildArgs: PHP_VERSION=${{ matrix.php }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
