@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Generate a changelog
-        uses: orhun/git-cliff-action@v2
+        uses: orhun/git-cliff-action@v4
         id: git-cliff
         with:
           config: cliff.toml
@@ -25,7 +25,7 @@ jobs:
           OUTPUT: GIT_CHANGELOG.md
 
       - name: Commit updated CHANGELOG
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v6
         with:
           branch: main
           commit_message: Update CHANGELOG
