@@ -69,6 +69,7 @@ RUN apt-get install -y \
   && rm -rf /var/lib/apt/lists/*
 RUN npm install -g npm@latest
 RUN npm install -g pnpm
+RUN install-php-extensions calendar
 
 RUN  apt-get autoremove -y --purge \
   && apt-get autoclean -y \
