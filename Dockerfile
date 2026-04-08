@@ -20,7 +20,8 @@ tini \
      default-mysql-client \
     zsh 
     
-RUN apt-get -y upgrade 
+RUN echo 'msodbcsql18 msodbcsql/ACCEPT_EULA boolean true' | debconf-set-selections \
+    && apt-get -y upgrade 
 #        pdo opcache         pdo_dblib \         sockets \         shmop \        snmp \         pspell \         sysvmsg \ tidy xls        sysvsem \        sysvshm \
 #RUN phpModules=" \
 #        bcmath \
