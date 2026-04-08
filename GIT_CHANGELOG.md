@@ -1,3 +1,8 @@
+## [unreleased]
+
+### 🐛 Bug Fixes
+
+- Accept msodbcsql18 EULA before apt-get upgrade
 ## [1.0.2] - 2025-06-19
 
 ### 🚀 Features
